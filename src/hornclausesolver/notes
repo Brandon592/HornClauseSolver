@@ -1,0 +1,19 @@
+<HClause>::     <Predicate> [<PredList>]
+<PredList>::    <Predicate>[','<Predicate>]
+<Predicate>::   <Name>'('<Termlist>')'
+<Termlist>::    <Term>[','<Term>]
+<Term>::        <Variable> | <Constant>
+<Variable>::    '?'[a-z | A-Z][a-z | A-Z | 0-9 | _ ]*
+<Constant>::    <integer> <atom>
+<Name>::        [A-Z][a-z | A-Z | 0-9 | _ ]*
+
+Example:
+C(?x):-A(?x),B(?x)
+B(?x):-D(?x)
+A(c)
+B(123)
+D(c)
+
+(Entered as a question on command line)
+->C(?x)
+returns C(c)
